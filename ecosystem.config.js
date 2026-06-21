@@ -25,5 +25,15 @@ module.exports = {
       autorestart: true,
       max_memory_restart: "500M",
     },
+    {
+      name: "calorie-webhook",
+      script: "webhook-server.js",
+      env: {
+        WEBHOOK_SECRET: "calorie-check-deploy-secret",
+      },
+      instances: 1,
+      autorestart: true,
+      max_memory_restart: "200M",
+    },
   ],
 };

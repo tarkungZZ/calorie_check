@@ -8,12 +8,10 @@ echo "=== Pulling latest code ==="
 git pull origin main
 
 echo "=== Updating version ==="
-cat > version.json << EOF
-{
-  "version": "$(git rev-parse --short HEAD)",
-  "buildTime": "$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
-}
-EOF
+HASH=$(git rev-parse --short HEAD)
+TIME=$(date -u +%Y-%m-%dT%H:%M:%S.000Z)
+echo "{\"version\":\"$HASH\",\"buildTime\":\"$TIME\"}" > version.json
+cat version.json
 
 echo "=== Installing backend dependencies ==="
 cd backend
@@ -23,11 +21,10 @@ cd ..
 echo "=== Building frontend ==="
 cd frontend
 npm install
-npm run build
+NODE_OPTIONS='--max-old-space-size=512' npm run build
 cd ..
 
-echo "=== Restarting backend (PM2) ==="
-pm2 restart ecosystem.config.js --update-env || pm2 start ecosystem.config.js
+echo "=== Restarting services (PM2) ==="
+pm2 restart ecosystem.config.js --update-env 2>/dev/null || pm2 start ecosystem.config.js
 
 echo "=== Deploy complete ==="
-echo "Version: $(cat version.json)"
