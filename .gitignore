@@ -134,3 +134,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# SSH helper (contains credentials)
+ssh_helper.py
+
+# Server setup (not needed in repo)
+server-setup.sh
+
+# Uploaded images (local data)
+backend/uploads/*.jpg
+backend/uploads/*.jpeg
+backend/uploads/*.png
+backend/uploads/*.gif
+backend/uploads/*.webp
