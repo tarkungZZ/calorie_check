@@ -135,8 +135,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# SSH helper (contains credentials)
+# SSH/deploy helpers (contain credentials)
 ssh_helper.py
+_set_version.py
+_update_version.sh
+_upload_and_run.py
 
 # Server setup (not needed in repo)
 server-setup.sh
