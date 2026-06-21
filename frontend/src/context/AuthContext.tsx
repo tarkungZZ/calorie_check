@@ -126,7 +126,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
-  const authHeaders = useCallback(() => {
+  const authHeaders = useCallback((): Record<string, string> => {
     if (!token) return {};
     return { Authorization: `Bearer ${token}` };
   }, [token]);
