@@ -29,7 +29,6 @@ export const metadata: Metadata = {
   description:
     "ถ่ายรูปหรืออัพโหลดรูปอาหาร แล้วให้ AI วิเคราะห์แคลอรี่และสารอาหารให้คุณ",
   manifest: "/manifest.json",
-  themeColor: "#f97316",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
